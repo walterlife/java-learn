@@ -1,0 +1,19 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <bean id="OutputHelper" class="com.walterlife.blog.OutputHelper">
+        <!-- 通过 setter 注入  -->
+        <!--<property name="outputGenerator" ref local="JsonOutputGenerator" />-->
+        <!--<property name="outputGenerator" ref local="CsvOutputGenerator" />-->
+        <!-- 通过 构造函数注入 -->
+        <constructor-arg>
+            <bean class="com.walterlife.blog.CsvOutputGenerator" />
+        </constructor-arg>
+    </bean>
+
+    <bean id="CsvOutputGenerator" class="com.walterlife.blog.CsvOutputGenerator" />
+    <bean id="JsonOutputGenerator" class="com.walterlife.blog.JsonOutputGenerator" />
+
+</beans>
